@@ -1,0 +1,115 @@
+/*part1
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int calls;
+
+int power(int a, int n){
+  calls++;
+  if (n!=0){
+    return a*power(a,n-1);
+  }
+  else {
+    return 1;
+  }
+}
+
+int main() {
+  int a,n,result;
+  cout<<"Choose a:";
+  cin>>a;
+  cout<<"Choose its power n:";
+  cin>>n;
+  calls=0;
+  cout<<a<<" to the power of "<<n<<" is "<<power(a,n)<<endl;
+  cout<<"This result has been found with "<<calls<<" recursive calls.";
+}
+*/
+
+
+/*part2
+int calls;
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int power_odd_even(int a, int n){
+  calls++;
+  if (n==0){
+    return 1;
+  }
+  if(n%2!=0){
+    return a*power_odd_even(a,n/2)*power_odd_even(a,n/2);
+  }
+  if (n%2==0){
+      return power_odd_even(a,n/2)*power_odd_even(a,n/2);
+  }
+}
+
+
+int main() {
+  int a,n,result;
+  cout<<"Choose a:";
+  cin>>a;
+  cout<<"Choose its power n:";
+  cin>>n;
+  calls=0;
+  cout<<a<<" to the power of "<<n<<" is "<<power_odd_even(a,n)<<endl;
+  cout<<"This result has been found with "<<calls<<" recursive calls.";
+}
+*/
+
+/*part3
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int callsv1;
+
+int power(int a, int n){
+  callsv1++;
+  if (n!=0){
+    return a*power(a,n-1);
+  }
+  else {
+    return 1;
+  }
+}
+
+int callsv2;
+
+int power_odd_even(int a, int n){
+  callsv2++;
+  if (n==0){
+    return 1;
+  }
+  if(n%2!=0){
+    return a*power_odd_even(a,n/2)*power_odd_even(a,n/2);
+  }
+  if (n%2==0){
+      return power_odd_even(a,n/2)*power_odd_even(a,n/2);
+  }
+}
+
+int main() {
+  int a,n,result;
+  cout<<"Choose a:";
+  cin>>a;
+  cout<<"Choose its power n:";
+  cin>>n;
+  callsv1=0;
+  callsv2=0;
+  cout<<"With method 1, "<<a<<" to the power of "<<n<<" is "<<power(a,n)<<endl;
+  cout<<"With method 1, this result has been found with "<<callsv1<<" recursive calls."<<endl;
+  cout<<"With method 2, "<<a<<" to the power of "<<n<<" is "<<power_odd_even(a,n)<<endl;
+  cout<<"With method 2, this result has been found with "<<callsv2<<" recursive calls."<<endl;
+}
+*/
+
+/*
+We can see that the number of recursive calls with method 1, is equal to n+1.
+
+For method 2, it is a 'fonction en escalier' with the length of the 'steps' which are growing following this format : 1,2-3,4-7,8-15, etc. the length itself grows by an exponentional function of 2^x. The value associated with the steps is equal to the sum of the exponential result of 2^x. Thus it would give us: for f(1):1+2=3, f(2)=f(3)=1+2+4=7, f(4) to f(7)=1+2+4+8=15, f(8) to f(15)=1+2+4+8+16=31, f(16) to f(31)=f(15)+32=63, f(32) to f(63)=127 and so on. Did not find how to model that as a function. 
+*/
